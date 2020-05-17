@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template/admin.xhtml">
+    <ui:define name="content">
+        <h:form>
+            <div class="form-group">
+                <label> İŞLETİM SİSTEMİ  :</label>
+                <h:inputText styleClass="form-control" value="#{isletimSistemiBean.entity.isletim_adı}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> LİSANS SÜRÜMÜ :</label>
+                <h:inputText styleClass="form-control" value="#{isletimSistemiBean.entity.lisans_surum}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> WİNDOWS SÜRÜMÜ :</label>
+                <h:inputText styleClass="form-control" value="#{isletimSistemiBean.entity.win_surum}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> İŞLETİM SİSTEMİ DİLİ :</label>
+                <h:inputText styleClass="form-control" value="#{isletimSistemiBean.entity.dil}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> İŞLETİM SİSTEMİ FİYATI:</label>
+                <h:inputText styleClass="form-control" value="#{isletimSistemiBean.entity.isletimsistemi_fiyat}" /><br/>
+            </div>
+            <h:commandButton styleClass="btn btn-primary" action="#{isletimSistemiBean.update()}" value="Güncelle"/>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template/admin.xhtml">
+    <ui:define name="content">
+        <h:form>
+            <h:commandButton styleClass="btn btn-success" action="/kasa/create" value="YENİ KASA EKLE"/>
+            <h:dataTable styleClass="table table-hover table-striped mt-3" value="#{kasaBean.read}" var="c">               
+                <h:column>
+                    <f:facet name="header">KASA ID</f:facet>
+                        #{c.kasa_id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">KASA ADI</f:facet>
+                        #{c.kasa_adı}  
+                </h:column>
+                <h:column>
+                    <f:facet name="header">SOKET TÜRÜ</f:facet>
+                        #{c.soket_turu}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">ÇIKIŞ GÜCÜ</f:facet>
+                        #{c.cikis_gücü}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">FAN SAYISI</f:facet>
+                        #{c.fan_sayisi}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">RENK</f:facet>
+                        #{c.renk}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">KASA FİYATI</f:facet>
+                        #{c.kasa_fiyat}
+                </h:column>
+                <h:column>
+                    <div class="btn-group" role="group">
+                        <h:commandButton styleClass="btn btn-primary" action="#{kasaBean.updateForm(c)}" value="Güncelle"/>
+                        <h:commandButton styleClass="btn btn-danger" action="#{kasaBean.delete(c)}" value="Sil"/>
+                    </div>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
+

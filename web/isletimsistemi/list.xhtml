@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template/admin.xhtml">
+    <ui:define name="content">
+        <h:form>
+            <h:commandButton styleClass="btn btn-success" action="/isletimsistemi/create" value="YENİ İŞLETİM SİSTEMİ EKLE"/>
+            <h:dataTable styleClass="table table-hover table-striped mt-3" value="#{isletimSistemiBean.read}" var="c">               
+                <h:column>
+                    <f:facet name="header">İŞLETİM SİSTEMİ ID</f:facet>
+                        #{c.isletim_id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">İŞLETİM SİSTEMİ ADI</f:facet>
+                        #{c.isletim_adı}  
+                </h:column>
+                <h:column>
+                    <f:facet name="header">LİSANS SÜRÜMÜ</f:facet>
+                        #{c.lisans_surum}  
+                </h:column>
+                <h:column>
+                    <f:facet name="header">WİNDOWS SÜRÜMÜ)</f:facet>
+                        #{c.win_surum}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">İŞLETİM SİSTEMİ DİLİ</f:facet>
+                        #{c.dil}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">İŞLETİM SİSTEMİ FİYATI</f:facet>
+                        #{c.isletimsistemi_fiyat}
+                </h:column>
+                <h:column>
+                    <div class="btn-group" role="group">
+                        <h:commandButton styleClass="btn btn-primary" action="#{isletimSistemiBean.updateForm(c)}" value="Güncelle"/>
+                        <h:commandButton styleClass="btn btn-danger" action="#{isletimSistemiBean.delete(c)}" value="Sil"/>
+                    </div>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
