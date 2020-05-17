@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template/admin.xhtml">
+    <ui:define name="content">
+        <h:form>
+            <div class="form-group">
+                <label> HARDDİSK ADI :</label>
+                <h:inputText styleClass="form-control" value="#{harddiskBean.entity.harddisk_adı}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> HARDDİSK KAPASİTESİ :</label>
+                <h:inputText styleClass="form-control" value="#{harddiskBean.entity.harddisk_kapasite}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> HARDDİSK BOYUTU(İNÇ) :</label>
+                <h:inputText styleClass="form-control" value="#{harddiskBean.entity.harddisk_inc}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> HARDDİSK ARABİRİMİ :</label>
+                <h:inputText styleClass="form-control" value="#{harddiskBean.entity.harddisk_arabirim}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> HARDDİSK DÖNÜŞ HIZI:</label>
+                <h:inputText styleClass="form-control" value="#{harddiskBean.entity.harddisk_donushizi}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> HARDDİSK ÖNBELLEĞİ:</label>
+                <h:inputText styleClass="form-control" value="#{harddiskBean.entity.harddisk_onbellek}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> HARDDİSK FİYATI :</label>
+                <h:inputText styleClass="form-control" value="#{harddiskBean.entity.harddisk_fiyat}" /><br/>
+            </div>
+            <h:commandButton styleClass="btn btn-primary" action="#{harddiskBean.update()}" value="Güncelle"/>
+        </h:form>
+    </ui:define>
+</ui:composition>

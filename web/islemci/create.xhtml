@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template/admin.xhtml">
+    <ui:define name="content">
+        <h:form>
+            <div class="form-group">
+                <label> İŞLEMCİ ADI :</label>
+                <h:inputText styleClass="form-control" value="#{islemciBean.entity.islemci_adı}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> İŞLEMCİ TÜRÜ :</label>
+                <h:inputText styleClass="form-control" value="#{islemciBean.entity.islemci_turu}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> İŞLEMCİ NESLİ :</label>
+                <h:inputText styleClass="form-control" value="#{islemciBean.entity.islemci_nesil}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> TEMEL FREKANS :</label>
+                <h:inputText styleClass="form-control" value="#{islemciBean.entity.temel_frekans}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> TURBO FREKANS :</label>
+                <h:inputText styleClass="form-control" value="#{islemciBean.entity.turbo_frekans}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> ÖNBELLEK :</label>
+                <h:inputText styleClass="form-control" value="#{islemciBean.entity.onbellek}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> ÇEKİRDEK SAYISI :</label>
+                <h:inputText styleClass="form-control" value="#{islemciBean.entity.cekirdek_sayisi}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> SOKET TÜRÜ :</label>
+                <h:inputText styleClass="form-control" value="#{islemciBean.entity.soket_turu}" /><br/>
+            </div>
+            <div class="form-group">
+                <label> İŞLEMCİ FİYATI :</label>
+                <h:inputText styleClass="form-control" value="#{islemciBean.entity.islemci_fiyat}" /><br/>
+            </div>
+            <h:commandButton styleClass="btn btn-primary" action="#{islemciBean.create()}" value="İŞLEMCİ EKLE"/>
+        </h:form>
+    </ui:define>
+</ui:composition>
