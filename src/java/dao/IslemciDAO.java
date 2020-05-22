@@ -1,4 +1,3 @@
-
 package dao;
 
 import entity.Islemci;
@@ -11,9 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import util.DBConnection;
 
-
 public class IslemciDAO extends DBConnection {
-    
 
     public Islemci getById(int id) {
         Islemci e = null;
@@ -53,27 +50,16 @@ public class IslemciDAO extends DBConnection {
         List<Islemci> list = new ArrayList<>();
 
         try {
-            Statement st = null;
-            try {
-                st = this.connect().createStatement();
-            } catch (InstantiationException ex) {
-                Logger.getLogger(IslemciDAO.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(IslemciDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Statement st = this.connect().createStatement();
             ResultSet rs = st.executeQuery("select * from islemci order by islemci_id asc");
             while (rs.next()) {
                 Islemci tmp = new Islemci(rs.getInt("islemci_id"), rs.getString("islemci_adı"), rs.getString("islemci_turu"), rs.getString("islemci_nesil"), rs.getInt("temel_frekans"), rs.getInt("turbo_frekans"), rs.getString("onbellek"), rs.getInt("cekirdek_sayisi"), rs.getString("soket_turu"), rs.getInt("islemci_fiyat"));
                 list.add(tmp);
-
             }
-        } catch (SQLException e) {
-
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
         return list;
-
     }
 
     public void update(Islemci c) {
