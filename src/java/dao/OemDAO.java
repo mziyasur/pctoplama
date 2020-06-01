@@ -152,12 +152,40 @@ public class OemDAO extends DBConnection {
 
     }
 
-    public List<Oem> read() {
-        List<Oem> list = new ArrayList<>();
+    public void update(Oem c) {
 
         try {
             Statement st = this.connect().createStatement();
-            ResultSet rs = st.executeQuery("select * from oem order by oem_id asc");
+            st.executeUpdate("update oem set islemci_id='" + c.getIslemci().getIslemci_id() + "',anakart_id='" + c.getAnakart().getAnakart_id() + "',bellek_id='" + c.getBellek().getBellek_id() + "',kasa_id='" + c.getKasa().getKasa_id() + "',ekrankart_id='" + c.getEkrankarti().getEkrankart_id() + "',harddisk_id='" + c.getHarddisk().getHarddisk_id() + "',ssd_id='" + c.getSsd().getSsd_id() + "',monitor_id='" + c.getMonitor().getMonitor_id() + "',isletim_id='" + c.getIsletimsistemi().getIsletim_id() + "'where oem_id=" + c.getOem_id());
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public void delete(Oem c) {
+
+        try {
+            Statement st = this.connect().createStatement();
+            st.executeUpdate("delete from oem where oem_id=" + c.getOem_id());
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+    public List<Oem> read(int page, int pageSize) {
+        List<Oem> list = new ArrayList<>();
+        int start = (page - 1) * pageSize;
+
+        try {
+            Statement st = this.connect().createStatement();
+            ResultSet rs = st.executeQuery("select * from oem order by oem_id asc limit " + start + "," + pageSize);
+
             while (rs.next()) {
                 Islemci a = this.getIslemciDao().getById(rs.getInt("islemci_id"));
                 Anakart b = this.getAnakDao().getById(rs.getInt("anakart_id"));
@@ -182,29 +210,4 @@ public class OemDAO extends DBConnection {
 
     }
 
-    public void update(Oem c) {
-
-        try {
-            Statement st = this.connect().createStatement();
-            //st.executeUpdate("update oem set oem_adı='" + c.getOem_adı() + "',uyumlu_kasa='" + c.getUyumlu_kasa() + "',soket_turu='" + c.getSoket_turu() + "',bellek_turu='" + c.getBellek_turu() + "',maxbellek='" + c.getMaxbellek() + "'where oem_id=" + c.getOem_id());
-
-        } catch (Exception e) {
-
-            System.out.println(e.getMessage());
-        }
-
-    }
-
-    public void delete(Oem c) {
-
-        try {
-            Statement st = this.connect().createStatement();
-            st.executeUpdate("delete from oem where oem_id=" + c.getOem_id());
-
-        } catch (Exception e) {
-
-            System.out.println(e.getMessage());
-        }
-
-    }
 }
