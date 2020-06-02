@@ -48,14 +48,16 @@ public class EkranKartiDAO extends DBConnection {
 
     }
 
-    public List<EkranKarti> read() {
+    public List<EkranKarti> read(int page, int pageSize) {
         List<EkranKarti> list = new ArrayList<>();
+        int start = (page - 1) * pageSize;
 
         try {
             Statement st = this.connect().createStatement();
-            ResultSet rs = st.executeQuery("select * from ekran_kart order by ekrankart_id asc");
+            ResultSet rs = st.executeQuery("select * from ekran_kart order by ekrankart_id asc limit " + start + "," + pageSize);
+
             while (rs.next()) {
-                EkranKarti tmp = new EkranKarti(rs.getInt("ekrankart_id"), rs.getString("ekrankart_adı"), rs.getString("ekrankart_bellek"), rs.getString("bit_degeri"), rs.getString("bellek_tipi"), rs.getString("slot_yapisi"), rs.getInt("ekrankart_fiyat"));
+                EkranKarti tmp = new EkranKarti(rs.getInt("ekrankart_id"), rs.getString("ekrankart_adı"), rs.getInt("ekrankart_bellek"), rs.getInt("bit_degeri"), rs.getString("bellek_tipi"), rs.getString("slot_yapisi"), rs.getInt("ekrankart_fiyat"));
                 list.add(tmp);
 
             }
@@ -90,6 +92,25 @@ public class EkranKartiDAO extends DBConnection {
 
             System.out.println(e.getMessage());
         }
+
+    }
+     public int count() {
+        int count = 0;
+
+        try {
+            Statement st = this.connect().createStatement();
+            //ResultSet rs = st.executeQuery("select * from anakart order by anakart_id asc");
+            ResultSet rs = st.executeQuery("select count(ekrankart_id) as ekran_kart_count from ekran_kart");
+            rs.next();
+
+            count = rs.getInt("ekran_kart_count");
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+        }
+
+        return count;
 
     }
 }

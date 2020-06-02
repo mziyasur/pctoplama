@@ -9,7 +9,12 @@
         <h:form id="isletim-form">
             <h:commandButton styleClass="btn btn-success" action="/parca/isletimsistemi/create" value="YENİ İŞLETİM SİSTEMİ EKLE">
                 <f:ajax execute="isletim-form" render="isletim-form"/>
+                 <pre>Page #{isletimSistemiBean.page} of #{isletimSistemiBean.pageCount} </pre>
             </h:commandButton>
+            <div class="btn-group"> 
+                <h:commandButton action="#{isletimSistemiBean.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
+                <h:commandButton action="#{isletimSistemiBean.next()}" value="Next" styleClass="btn btn-outline-dark"/>
+            </div>
             <h:dataTable styleClass="table table-hover table-striped mt-3" value="#{isletimSistemiBean.read}" var="c">               
                 <h:column>
                     <f:facet name="header">İŞLETİM SİSTEMİ ID</f:facet>

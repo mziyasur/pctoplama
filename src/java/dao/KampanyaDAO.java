@@ -72,6 +72,7 @@ public class KampanyaDAO extends DBConnection {
         return aList;
     }
 
+
     public Kampanya getById(int kampanya_id) {
         Kampanya h = null;
         try {
@@ -90,6 +91,21 @@ public class KampanyaDAO extends DBConnection {
             System.out.println(ex.getMessage());
         }
         return h;
+    }
+    
+    public int count() {
+        int count = 0;
+        try {
+            PreparedStatement pst = this.connect().prepareStatement("select  count(kampanya_id) as kampanya_count from kampanya");
+
+            ResultSet rs = pst.executeQuery();
+            rs.next();
+            count = rs.getInt("kampanya_count");
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return count;
     }
 
 }

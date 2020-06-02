@@ -178,7 +178,7 @@ public class OemDAO extends DBConnection {
 
     }
 
-    public List<Oem> read(int page, int pageSize) {
+   public List<Oem> read(int page, int pageSize) {
         List<Oem> list = new ArrayList<>();
         int start = (page - 1) * pageSize;
 
@@ -207,6 +207,26 @@ public class OemDAO extends DBConnection {
         }
 
         return list;
+
+    }
+    
+    public int count() {
+        int count = 0;
+
+        try {
+            Statement st = this.connect().createStatement();
+
+            ResultSet rs = st.executeQuery("select count(oem_id) as oem_count from oem");
+            rs.next();
+
+            count = rs.getInt("oem_count");
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+        }
+
+        return count;
 
     }
 

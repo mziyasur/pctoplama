@@ -46,20 +46,26 @@ public class IslemciDAO extends DBConnection {
 
     }
 
-    public List<Islemci> read() {
+    public List<Islemci> read(int page, int pageSize) {
         List<Islemci> list = new ArrayList<>();
+        int start = (page - 1) * pageSize;
 
         try {
             Statement st = this.connect().createStatement();
-            ResultSet rs = st.executeQuery("select * from islemci order by islemci_id asc");
+            ResultSet rs = st.executeQuery("select * from islemci order by islemci_id asc limit " + start + "," + pageSize);
+
             while (rs.next()) {
-                Islemci tmp = new Islemci(rs.getInt("islemci_id"), rs.getString("islemci_adı"), rs.getString("islemci_turu"), rs.getString("islemci_nesil"), rs.getInt("temel_frekans"), rs.getInt("turbo_frekans"), rs.getString("onbellek"), rs.getInt("cekirdek_sayisi"), rs.getString("soket_turu"), rs.getInt("islemci_fiyat"));
+                Islemci tmp = new Islemci(rs.getInt("islemci_id"), rs.getString("islemci_adı"), rs.getString("islemci_turu"), rs.getString("islemci_nesil"), rs.getFloat("temel_frekans"), rs.getFloat("turbo_frekans"), rs.getInt("onbellek"), rs.getInt("cekirdek_sayisi"), rs.getString("soket_turu"), rs.getInt("islemci_fiyat"));
                 list.add(tmp);
+
             }
         } catch (Exception e) {
+
             System.out.println(e.getMessage());
         }
+
         return list;
+
     }
 
     public void update(Islemci c) {
@@ -99,6 +105,26 @@ public class IslemciDAO extends DBConnection {
 
             System.out.println(e.getMessage());
         }
+
+    }
+    
+     public int count() {
+        int count = 0;
+
+        try {
+            Statement st = this.connect().createStatement();
+
+            ResultSet rs = st.executeQuery("select count(islemci_id) as islemci_count from islemci");
+            rs.next();
+
+            count = rs.getInt("islemci_count");
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+        }
+
+        return count;
 
     }
 }

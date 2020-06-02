@@ -34,20 +34,26 @@ public class IsletimSistemiDAO extends DBConnection {
         }
     }
 
-    public List<IsletimSistemi> read() {
+    public List<IsletimSistemi> read(int page, int pageSize) {
         List<IsletimSistemi> list = new ArrayList<>();
+        int start = (page - 1) * pageSize;
 
         try {
             Statement st = this.connect().createStatement();
-            ResultSet rs = st.executeQuery("select * from isletim_sistemi order by isletim_id asc");
+            ResultSet rs = st.executeQuery("select * from isletim_sistemi order by isletim_id asc limit " + start + "," + pageSize);
+
             while (rs.next()) {
-                IsletimSistemi tmp = new IsletimSistemi(rs.getInt("isletim_id"), rs.getString("isletim_adı"), rs.getString("lisans_surum"), rs.getString("win_surum"), rs.getString("dil"), rs.getInt("isletimsistemi_fiyat"));
+                IsletimSistemi tmp = new IsletimSistemi(rs.getInt("isletim_id"), rs.getString("isletim_adı"), rs.getString("lisans_surum"), rs.getInt("win_surum"), rs.getString("dil"), rs.getInt("isletimsistemi_fiyat"));
                 list.add(tmp);
+
             }
         } catch (Exception e) {
+
             System.out.println(e.getMessage());
         }
+
         return list;
+
     }
 
     public void update(IsletimSistemi c) {
@@ -70,5 +76,25 @@ public class IsletimSistemiDAO extends DBConnection {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+    
+    public int count() {
+        int count = 0;
+
+        try {
+            Statement st = this.connect().createStatement();
+
+            ResultSet rs = st.executeQuery("select count(isletim_id) as isletim_sistemi_count from isletim_sistemi");
+            rs.next();
+
+            count = rs.getInt("isletim_sistemi_count");
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+        }
+
+        return count;
+
     }
 }

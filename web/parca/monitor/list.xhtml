@@ -9,7 +9,12 @@
         <h:form id="monitor-form">
             <h:commandButton styleClass="btn btn-success" action="/parca/monitor/create" value="YENİ MONİTÖR EKLE">
                 <f:ajax execute="monitor-form" render="monitor-form"/>
+                <pre>Page #{monitorBean.page} of #{monitorBean.pageCount} </pre>
             </h:commandButton>
+            <div class="btn-group"> 
+                <h:commandButton action="#{monitorBean.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
+                <h:commandButton action="#{monitorBean.next()}" value="Next" styleClass="btn btn-outline-dark"/>
+            </div>
             <h:dataTable styleClass="table table-hover table-striped mt-3" value="#{monitorBean.read}" var="c">               
                 <h:column>
                     <f:facet name="header">MONİTÖR ID</f:facet>

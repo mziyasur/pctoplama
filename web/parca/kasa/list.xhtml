@@ -9,7 +9,12 @@
         <h:form id="kasa-form">
             <h:commandButton styleClass="btn btn-success" action="/parca/kasa/create" value="YENİ KASA EKLE">
                 <f:ajax execute="kasa-form" render="kasa-form"/>
+                <pre>Page #{kasaBean.page} of #{kasaBean.pageCount} </pre>
             </h:commandButton>
+             <div class="btn-group"> 
+                <h:commandButton action="#{kasaBean.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
+                <h:commandButton action="#{kasaBean.next()}" value="Next" styleClass="btn btn-outline-dark"/>
+            </div>
             <h:dataTable styleClass="table table-hover table-striped mt-3" value="#{kasaBean.read}" var="c">               
                 <h:column>
                     <f:facet name="header">KASA ID</f:facet>

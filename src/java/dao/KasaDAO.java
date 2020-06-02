@@ -34,20 +34,26 @@ public class KasaDAO extends DBConnection {
         }
     }
 
-    public List<Kasa> read() {
+    public List<Kasa> read(int page, int pageSize) {
         List<Kasa> list = new ArrayList<>();
+        int start = (page - 1) * pageSize;
 
         try {
             Statement st = this.connect().createStatement();
-            ResultSet rs = st.executeQuery("select * from kasa order by kasa_id asc");
+            ResultSet rs = st.executeQuery("select * from kasa order by kasa_id asc limit " + start + "," + pageSize);
+
             while (rs.next()) {
-                Kasa tmp = new Kasa(rs.getInt("kasa_id"), rs.getString("kasa_adı"), rs.getString("soket_turu"), rs.getString("cikis_gücü"), rs.getInt("fan_sayisi"), rs.getString("renk"), rs.getInt("kasa_fiyat"));
+                Kasa tmp = new Kasa(rs.getInt("kasa_id"), rs.getString("kasa_adı"), rs.getString("soket_turu"), rs.getInt("cikis_gücü"), rs.getInt("fan_sayisi"), rs.getString("renk"), rs.getInt("kasa_fiyat"));
                 list.add(tmp);
+
             }
         } catch (Exception e) {
+
             System.out.println(e.getMessage());
         }
+
         return list;
+
     }
 
     public void update(Kasa c) {
@@ -69,5 +75,25 @@ public class KasaDAO extends DBConnection {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public int count() {
+        int count = 0;
+
+        try {
+            Statement st = this.connect().createStatement();
+
+            ResultSet rs = st.executeQuery("select count(kasa_id) as kasa_count from kasa");
+            rs.next();
+
+            count = rs.getInt("kasa_count");
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+        }
+
+        return count;
+
     }
 }

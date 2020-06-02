@@ -47,14 +47,16 @@ public class MonitorDAO extends DBConnection {
 
     }
 
-    public List<Monitor> read() {
+     public List<Monitor> read(int page, int pageSize) {
         List<Monitor> list = new ArrayList<>();
+        int start = (page - 1) * pageSize;
 
         try {
             Statement st = this.connect().createStatement();
-            ResultSet rs = st.executeQuery("select * from monitor order by monitor_id asc");
+            ResultSet rs = st.executeQuery("select * from monitor order by monitor_id asc limit " + start + "," + pageSize);
+
             while (rs.next()) {
-                Monitor tmp = new Monitor(rs.getInt("monitor_id"), rs.getString("monitor_adı"), rs.getInt("ekranboyutu_inc"), rs.getString("cozunurluk"), rs.getString("yenileme_hizi"), rs.getString("tepkime_suresi"), rs.getString("baglanti_tipi"), rs.getInt("monitor_fiyat"));
+                Monitor tmp = new Monitor(rs.getInt("monitor_id"), rs.getString("monitor_adı"), rs.getFloat("ekranboyutu_inc"), rs.getString("cozunurluk"), rs.getInt("yenileme_hizi"), rs.getFloat("tepkime_suresi"), rs.getString("baglanti_tipi"), rs.getInt("monitor_fiyat"));
                 list.add(tmp);
 
             }
@@ -90,6 +92,25 @@ public class MonitorDAO extends DBConnection {
 
             System.out.println(e.getMessage());
         }
+
+    }
+    public int count() {
+        int count = 0;
+
+        try {
+            Statement st = this.connect().createStatement();
+
+            ResultSet rs = st.executeQuery("select count(monitor_id) as monitor_count from monitor");
+            rs.next();
+
+            count = rs.getInt("monitor_count");
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+        }
+
+        return count;
 
     }
 }

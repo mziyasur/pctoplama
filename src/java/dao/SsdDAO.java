@@ -47,14 +47,16 @@ public class SsdDAO extends DBConnection {
 
     }
 
-    public List<Ssd> read() {
+    public List<Ssd> read(int page, int pageSize) {
         List<Ssd> list = new ArrayList<>();
+        int start = (page - 1) * pageSize;
 
         try {
             Statement st = this.connect().createStatement();
-            ResultSet rs = st.executeQuery("select * from ssd order by ssd_id asc");
+            ResultSet rs = st.executeQuery("select * from ssd order by ssd_id asc limit " + start + "," + pageSize);
+
             while (rs.next()) {
-                Ssd tmp = new Ssd(rs.getInt("ssd_id"), rs.getString("ssd_adı"), rs.getString("ssd_kapasite"), rs.getString("ssd_arabirim"), rs.getString("ssd_okumahizi"), rs.getString("ssd_yazmahizi"), rs.getInt("ssd_fiyat"));
+                Ssd tmp = new Ssd(rs.getInt("ssd_id"), rs.getString("ssd_adı"), rs.getInt("ssd_kapasite"), rs.getString("ssd_arabirim"), rs.getInt("ssd_okumahizi"), rs.getInt("ssd_yazmahizi"), rs.getInt("ssd_fiyat"));
                 list.add(tmp);
 
             }
@@ -66,7 +68,6 @@ public class SsdDAO extends DBConnection {
         return list;
 
     }
-
     public void update(Ssd c) {
 
         try {
@@ -89,6 +90,26 @@ public class SsdDAO extends DBConnection {
 
             System.out.println(e.getMessage());
         }
+
+    }
+    
+    public int count() {
+        int count = 0;
+
+        try {
+            Statement st = this.connect().createStatement();
+
+            ResultSet rs = st.executeQuery("select count(ssd_id) as ssd_count from ssd");
+            rs.next();
+
+            count = rs.getInt("ssd_count");
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+        }
+
+        return count;
 
     }
 }

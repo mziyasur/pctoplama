@@ -9,7 +9,12 @@
         <h:form id="ssd-form">
             <h:commandButton styleClass="btn btn-success" action="/parca/ssd/create" value="YENİ SSD EKLE">
                 <f:ajax execute="ssd-form" render="ssd-form"/>
+                <pre>Page #{ssdBean.page} of #{ssdBean.pageCount} </pre>
             </h:commandButton>
+             <div class="btn-group"> 
+                <h:commandButton action="#{ssdBean.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
+                <h:commandButton action="#{ssdBean.next()}" value="Next" styleClass="btn btn-outline-dark"/>
+            </div>
             <h:dataTable styleClass="table table-hover table-striped mt-3" value="#{ssdBean.read}" var="c">               
                 <h:column>
                     <f:facet name="header">SSD ID</f:facet>

@@ -98,5 +98,20 @@ public class KullaniciKampanyaDAO extends DBConnection {
         }
         return aList;
     }
+    
+    public int count() {
+        int count = 0;
+
+        try {
+            PreparedStatement pst = this.connect().prepareStatement("select  count(kullaniciKampanya_id) as kullaniciKampanya_count from kullanicikampanya");
+            ResultSet rs = pst.executeQuery();
+            rs.next();
+            count = rs.getInt("kullaniciKampanya_count");
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return count;
+    }
 
 }

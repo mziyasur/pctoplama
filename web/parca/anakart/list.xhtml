@@ -9,7 +9,12 @@
         <h:form id="anakart-form">
             <h:commandButton styleClass="btn btn-success" action="/parca/anakart/create" value="YENİ ANAKART EKLE">
                 <f:ajax execute="anakart-form" render="anakart-form"/>
+                <pre>Page #{anakartBean.page} of #{anakartBean.pageCount} </pre>
             </h:commandButton>
+            <div class="btn-group"> 
+                <h:commandButton action="#{anakartBean.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
+                <h:commandButton action="#{anakartBean.next()}" value="Next" styleClass="btn btn-outline-dark"/>
+            </div>
             <h:dataTable styleClass="table table-hover table-striped mt-3" value="#{anakartBean.read}" var="c">               
                 <h:column>
                     <f:facet name="header">ANAKART ID</f:facet>

@@ -65,7 +65,7 @@ public class KullaniciDAO extends DBConnection {
         }
     }
 
-    public List<Kullanici> read(int page, int pageSize) {
+     public List<Kullanici> read(int page, int pageSize) {
         List<Kullanici> aList = new ArrayList<>();
         int start = (page - 1) * pageSize;
         try {
@@ -104,6 +104,22 @@ public class KullaniciDAO extends DBConnection {
             System.out.println(ex.getMessage());
         }
         return y;
+    }
+    
+     public int count() {
+        int count = 0;
+
+        try {
+            PreparedStatement pst = this.connect().prepareStatement("select  count(kullanici_id) as kullanici_count from kullanici");
+
+            ResultSet rs = pst.executeQuery();
+            rs.next();
+            count = rs.getInt("kullanici_count");
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return count;
     }
 
 }

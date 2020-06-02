@@ -1,6 +1,4 @@
-
 package dao;
-
 
 import entity.Harddisk;
 import java.sql.ResultSet;
@@ -9,9 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import util.DBConnection;
 
-
 public class HarddiskDAO extends DBConnection {
-    
 
     public Harddisk getById(int id) {
         Harddisk d = null;
@@ -40,14 +36,16 @@ public class HarddiskDAO extends DBConnection {
 
     }
 
-    public List<Harddisk> read() {
+    public List<Harddisk> read(int page, int pageSize) {
         List<Harddisk> list = new ArrayList<>();
+        int start = (page - 1) * pageSize;
 
         try {
             Statement st = this.connect().createStatement();
-            ResultSet rs = st.executeQuery("select * from hard_disk order by harddisk_id asc");
+            ResultSet rs = st.executeQuery("select * from hard_disk order by harddisk_id asc limit " + start + "," + pageSize);
+
             while (rs.next()) {
-                Harddisk tmp = new Harddisk(rs.getInt("harddisk_id"), rs.getString("harddisk_adı"), rs.getString("harddisk_kapasite"), rs.getInt("harddisk_inc"), rs.getString("harddisk_arabirim"), rs.getString("harddisk_donushizi"), rs.getString("harddisk_onbellek"), rs.getInt("harddisk_fiyat"));
+                Harddisk tmp = new Harddisk(rs.getInt("harddisk_id"), rs.getString("harddisk_adı"), rs.getFloat("harddisk_kapasite"), rs.getFloat("harddisk_inc"), rs.getString("harddisk_arabirim"), rs.getInt("harddisk_donushizi"), rs.getInt("harddisk_onbellek"), rs.getInt("harddisk_fiyat"));
                 list.add(tmp);
 
             }
@@ -83,6 +81,25 @@ public class HarddiskDAO extends DBConnection {
 
             System.out.println(e.getMessage());
         }
+
+    }
+
+    public int count() {
+        int count = 0;
+
+        try {
+            Statement st = this.connect().createStatement();
+            ResultSet rs = st.executeQuery("select count(harddisk_id) as hard_disk_count from hard_disk");
+            rs.next();
+
+            count = rs.getInt("hard_disk_count");
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+        }
+
+        return count;
 
     }
 }

@@ -47,14 +47,15 @@ public class BellekDAO extends DBConnection {
 
     }
 
-    public List<Bellek> read() {
+    public List<Bellek> read(int page, int pageSize) {
         List<Bellek> list = new ArrayList<>();
+        int start = (page-1)*pageSize;
 
         try {
             Statement st = this.connect().createStatement();
-            ResultSet rs = st.executeQuery("select * from bellek order by bellek_id asc");
+            ResultSet rs = st.executeQuery("select * from bellek order by bellek_id asc limit "+start+","+pageSize);
             while (rs.next()) {
-                Bellek tmp = new Bellek(rs.getInt("bellek_id"), rs.getString("bellek_adı"), rs.getInt("kapasite"), rs.getString("bellek_turu"), rs.getString("calisma_hizi"), rs.getString("gecikme_degeri"), rs.getInt("bellek_fiyat"));
+                Bellek tmp = new Bellek(rs.getInt("bellek_id"), rs.getString("bellek_adı"), rs.getInt("kapasite"), rs.getString("bellek_turu"), rs.getInt("calisma_hizi"), rs.getString("gecikme_degeri"), rs.getInt("bellek_fiyat"));
                 list.add(tmp);
 
             }
@@ -90,6 +91,29 @@ public class BellekDAO extends DBConnection {
 
             System.out.println(e.getMessage());
         }
+
+    }
+    
+     public int count () {
+        int count = 0 ;
+
+        try {
+            Statement st = this.connect().createStatement();
+            
+            ResultSet rs = st.executeQuery("select count(bellek_id) as bellek_count from bellek");
+            rs.next();
+            
+            count = rs.getInt("bellek_count");
+            
+                
+
+            
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+        }
+
+        return count;
 
     }
 }

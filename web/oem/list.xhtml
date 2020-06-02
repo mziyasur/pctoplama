@@ -6,8 +6,15 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="/template/admin.xhtml">
     <ui:define name="content">
-        <h:form>
-            <h:commandButton styleClass="btn btn-success" action="/oem/create" value="YENİ OEM EKLE"/>
+        <h:form id="oem-form">
+            <h:commandButton styleClass="btn btn-success" action="/oem/create" value="YENİ OEM EKLE">
+                <f:ajax execute="oem-form" render="oem-form"/>
+                <pre>Page #{oemBean.page} of #{oemBean.pageCount} </pre>
+            </h:commandButton>
+            <div class="btn-group"> 
+                <h:commandButton action="#{oemBean.previous()}" value="Previous" styleClass="btn btn-outline-dark"/>
+                <h:commandButton action="#{oemBean.next()}" value="Next" styleClass="btn btn-outline-dark"/>
+            </div>
             <h:dataTable styleClass="table table-hover table-striped mt-3" value="#{oemBean.read}" var="c">               
                 <h:column>
                     <f:facet name="header">Oem ID</f:facet>
