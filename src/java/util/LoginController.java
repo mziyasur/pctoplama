@@ -23,14 +23,14 @@ public class LoginController implements Serializable {
     public static Admin tmp;
 
     public String kullaniciLogin() {
-
+        
         temp = this.getKullaniciDao().findByusername(this.kullanici.getKullanici_ad());
         String parola = this.kullanici.getKullanici_sifre();
         if (temp != null) {
             if (parola.equals(temp.getKullanici_sifre())) {
                 this.kullanici = temp;
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("valid_kullanici", this.kullanici);
-                return "/template/kullanici.xhtml";
+                return "/oem/list.xhtml";
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(parola + " - " + temp.getKullanici_sifre()));
                 return "/login/kullanicilogin.xhtml";
@@ -49,7 +49,7 @@ public class LoginController implements Serializable {
             if (p.equals(tmp.getAdmin_sifre())) {
                 this.admin = tmp;
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("valid_admin", this.admin);
-                return "/template/admin.xhtml";
+                return "/parca/anakart/list.xhtml";
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(p + " - " + tmp.getAdmin_sifre()));
                 return "/login/adminlogin.xhtml";

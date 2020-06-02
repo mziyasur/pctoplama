@@ -23,7 +23,9 @@
             <h:commandButton class="btn btn-success" value="OLUŞTUR" action="#{kullaniciKampanyaBean.create()}">
                 <f:ajax execute="kullanicikampanya-table" render="kullanicikampanya-table"/>
             </h:commandButton>
-            
+            <h:commandButton styleClass="btn btn-primary" action="/kulkam/list" value="İPTAL ET">
+                <f:ajax execute="kullanicimenu"   render="kullanicikampanya-table"/>
+            </h:commandButton>
         </h:form>
     </ui:define>
 </ui:composition>

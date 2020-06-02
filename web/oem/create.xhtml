@@ -6,7 +6,7 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="/template/kullanici.xhtml">
     <ui:define name="content">
-        <h:form>
+        <h:form id="oem-form">
             <div class="form-group">
                 <label> İşlemci ID:</label>
                 <h:selectOneMenu styleClass="form-group form-control-plaintext btn-primary" value="#{oemBean.entity.islemci}" converter="islemciConverter">
@@ -19,7 +19,7 @@
                     <f:selectItems value="#{anakartBean.read}" var="a" itemLabel="#{a.anakart_adı}" itemValue="#{a}"/>
                 </h:selectOneMenu>
             </div>
-            
+
             <div class="form-group">
                 <label> Bellek ID:</label>
                 <h:selectOneMenu styleClass="form-group form-control-plaintext btn-primary" value="#{oemBean.entity.bellek}" converter="bellekConverter">
@@ -62,7 +62,12 @@
                     <f:selectItems value="#{isletimSistemiBean.read}" var="k" itemLabel="#{k.isletim_adı}" itemValue="#{k}"/>
                 </h:selectOneMenu>
             </div>
-            <h:commandButton styleClass="btn btn-primary" action="#{oemBean.create()}" value="OEM EKLE"/>
+            <h:commandButton styleClass="btn btn-success" action="#{oemBean.create()}" value="OEM EKLE">
+                <f:ajax execute="oem-form" render="oem-form"/>
+            </h:commandButton>
+            <h:commandButton styleClass="btn btn-primary" action="/oem/list" value="VAZGEÇ">
+                <f:ajax execute="kullanicimenu"   render="oem-form"/>
+            </h:commandButton>
         </h:form>
     </ui:define>
 </ui:composition>

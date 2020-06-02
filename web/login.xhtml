@@ -5,7 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title><title>Login</title></title>
+        <title>AZEE BİLGİSAYAR TOPLAMA</title>
         <h:outputStylesheet library="css" name="bootstrap.css"/>
         <h:outputScript library="js" name="jquery-3.5.0.min.js"/>
         <h:outputScript library="js" name="bootstrap.js"/>
@@ -23,7 +23,7 @@
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                             <h:form>
-                                <h:commandButton styleClass="btn btn-primary" action="/login/kullanicilogin.xhtml" value="Kullanıcı Girişi">
+                                <h:commandButton styleClass="btn btn-success" action="/login/kullanicilogin.xhtml" value="Kullanıcı Girişi">
                                     <f:ajax execute="login-form" render="login-form"/>
                                 </h:commandButton>
                                 <h:commandButton styleClass="btn btn-primary" action="/login/adminlogin.xhtml" value="Admin Girişi">
@@ -41,7 +41,3 @@
         </div>
     </h:body>
 </html>
-
-
-
-

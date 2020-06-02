@@ -7,25 +7,35 @@
                 template="/template/kullanici.xhtml" >
     <ui:define name="content">
         <h:form id="kampanya-form">
-            <div class="form-group row">
+            <div class="form-group">
                 <label class="col-sm-2  col-form-label"  >KAMPANYA TÜRÜ</label>
                 <div class="col-sm-auto">
-                    <h:inputText  class="form-control" styleClass="form-control" value="#{kampanyaBean.entity.kampanya_turu}" >
+                    <h:inputText id="b" maxlength="60" class="form-control" styleClass="form-control" value="#{kampanyaBean.entity.kampanya_turu}" 
+                                 label="kampanya türü" validator="AdValidator">
                     </h:inputText>
+                    <h:message for="b" style="color: red;"/>
                 </div>
                 <label class="col-sm-2  col-form-label" >KAMPANYA ADI</label>
                 <div class="col-sm-auto">
-                    <h:inputText  class="form-control" value="#{kampanyaBean.entity.kampanya_adı}" >
+                    <h:inputText id="c" maxlength="60" class="form-control" value="#{kampanyaBean.entity.kampanya_adı}"
+                                 label="kampanya adı" validator="AdValidator">
                     </h:inputText>
+                    <h:message for="c" style="color: red;"/>
                 </div>
                 <label class="col-sm-2  col-form-label" >KAMPANYA İNDİRİM YÜZDESİ</label>
                 <div class="col-sm-auto">
-                    <h:inputText   class="form-control" value="#{kampanyaBean.entity.indirim_yuzdesi}">
+                    <h:inputText id="d" maxlength="9" class="form-control" value="#{kampanyaBean.entity.indirim_yuzdesi}"
+                                 label="kampanya indirim yüzdesi" validator="LowValidator" 
+                             onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
                     </h:inputText>
+                    <h:message for="d" style="color: red;"/>
                 </div>
                 <div class="col-sm-auto">
-                    <h:commandButton styleClass="btn btn-primary" action="#{kampanyaBean.update()}" value="KAMPANYA GÜNCELLE">
+                    <h:commandButton styleClass="btn btn-success" action="#{kampanyaBean.update()}" value="KAMPANYA GÜNCELLE">
                         <f:ajax execute="kampanya-form" render="kampanya-form"/>
+                    </h:commandButton>
+                    <h:commandButton styleClass="btn btn-primary" action="/kampanya/list" value="İPTAL ET">
+                        <f:ajax execute="kullanicimenu"   render="kampanya-form"/>
                     </h:commandButton>
                 </div>
             </div>

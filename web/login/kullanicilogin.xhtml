@@ -11,19 +11,15 @@
     </h:head>
     <h:form id="kullanicilogin-form" class="box">
         <h1>Kullanıcı Adı</h1>
-        <h:inputText class="form-control" value="#{loginController.kullanici.kullanici_ad}" ></h:inputText>
-            <h1>Şifre</h1>
-            <h:inputSecret class="form-control" value="#{loginController.kullanici.kullanici_sifre}" />
-            <h:commandButton styleClass="btn btn-primary" action="#{loginController.kullaniciLogin()}" value="Giriş Yap" > 
-                <f:ajax execute="kullanicilogin-form" render="kullanicilogin-form"/>
-            </h:commandButton>
+        <h:inputText id="ad" maxlength="20" class="form-control" value="#{loginController.kullanici.kullanici_ad}" 
+                     validatorMessage="Kullanıcı adı 10 karakteri geçemez!" >
+            <f:validateLength maximum="10" />
+        </h:inputText>
+        <h:message for="ad" style="color: yellow"/>
+        <h1>Şifre</h1>
+        <h:inputSecret id="sifre" redisplay="true" maxlength="20" class="form-control" value="#{loginController.kullanici.kullanici_sifre}" />
+        <h:commandButton action="#{loginController.kullaniciLogin()}" value="Giriş Yap" > 
+            <f:ajax execute="kullanicilogin-form" render="kullanicilogin-form"/>
+        </h:commandButton>
     </h:form>
 </html>
-
-
-
-
-
-
-
-

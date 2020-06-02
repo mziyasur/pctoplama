@@ -7,7 +7,7 @@
                 template="/template/kullanici.xhtml">
     <ui:define name="content">
         <h:form id="kullanicikampanya-table">
-            <div class="form-group row">
+            <div class="form-group">
                 <label class="col-sm-2 col-form-label">KULLANICI ID</label>
                 <div class="col-sm-auto">
                     <h:selectOneMenu styleClass="form-group form-control-plaintext btn-primary" value="#{kullaniciKampanyaBean.entity.kullaniciEntity.kullanici_id}">
@@ -21,8 +21,11 @@
                     </h:selectOneMenu>  
                 </div>
                 <div class="col-sm-auto">
-                    <h:commandButton styleClass="btn btn-primary" action="#{kullaniciKampanyaBean.update()}" value="Güncelle">
+                    <h:commandButton styleClass="btn btn-success" action="#{kullaniciKampanyaBean.update()}" value="Güncelle">
                         <f:ajax execute="kullanicikampanya-table" render="kullanicikampanya-table"/>
+                    </h:commandButton>
+                    <h:commandButton styleClass="btn btn-primary" action="/kulkam/list" value="İPTAL ET">
+                        <f:ajax execute="kullanicimenu"   render="kullanicikampanya-table"/>
                     </h:commandButton>
                 </div>
             </div>

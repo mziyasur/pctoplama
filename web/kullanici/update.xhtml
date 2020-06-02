@@ -11,13 +11,18 @@
 
                 <label class="col-sm-2  col-form-label" >KULLANICI ŞİFRE</label>
                 <div class="col-sm-9">
-                    <h:inputText  class="form-control" value="#{kullaniciBean.entity.kullanici_sifre}" >
+                    <h:inputText id="a" maxlength="9" class="form-control" value="#{kullaniciBean.entity.kullanici_sifre}" 
+                                 label="kullanıcı şifresi" validator="KullaniciValidator">
                     </h:inputText>
+                    <h:message for="a" style="color: red;"/>
                 </div>
                 <br/>
                 <div class="col-sm-9">
-                    <h:commandButton styleClass="btn btn-primary" action="#{kullaniciBean.update()}" value="ŞİFRE Güncelle">
+                    <h:commandButton styleClass="btn btn-success" action="#{kullaniciBean.update()}" value="ŞİFRE Güncelle">
                         <f:ajax execute="kullanici-table" render="kullanici-table"/>
+                    </h:commandButton>
+                    <h:commandButton styleClass="btn btn-primary" action="/kullanici/list" value="İPTAL ET">
+                        <f:ajax execute="kullanicimenu"   render="kullanici-table"/>
                     </h:commandButton>
                 </div>
             </div>

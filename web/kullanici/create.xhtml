@@ -8,26 +8,36 @@
 
     <ui:define name="content">     
         <h:form id="kullanici-table">
-            <div class="form-group row">
+            <div class="form-group">
                 <label class="col-sm-2  col-form-label">KULLANICI ID</label>
                 <div class="col-sm-auto">
-                    <h:inputText class="form-control" value="#{kullaniciBean.entity.kullanici_id}">
+                    <h:inputText id="a" maxlength="9" class="form-control" value="#{kullaniciBean.entity.kullanici_id}"
+                                 label="kullanıcı id" validator="HighValidator" 
+                             onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
                     </h:inputText>
+                    <h:message for="a" style="color: red;"/>
                 </div>
                 <label class="col-sm-2  col-form-label">KULLANICI ADI</label>
                 <div class="col-sm-auto">
-                    <h:inputText class="form-control" styleClass="form-control" value="#{kullaniciBean.entity.kullanici_ad}" >
+                    <h:inputText id="b" maxlength="15" class="form-control" styleClass="form-control" value="#{kullaniciBean.entity.kullanici_ad}"
+                                 label="kullanıcı adı" validator="KullaniciValidator">
                     </h:inputText>
+                    <h:message for="b" style="color: red;"/>
                 </div>
                 <label class="col-sm-2  col-form-label">KULLANICI ŞİFRE</label>
                 <div class="col-sm-auto">
-                    <h:inputText  class="form-control" value="#{kullaniciBean.entity.kullanici_sifre}" >
+                    <h:inputText id="c" maxlength="15" class="form-control" value="#{kullaniciBean.entity.kullanici_sifre}"
+                                 label="kullanıcı şifresi" validator="KullaniciValidator">
                     </h:inputText>
+                    <h:message for="c" style="color: red;"/>
                 </div>
-                <br/>
+                <br></br>
                 <div class="col-sm-auto">
-                    <h:commandButton styleClass="btn btn-primary" action="#{kullaniciBean.create()}" value="KULLANICI OLUŞTUR">
+                    <h:commandButton styleClass="btn btn-success" action="#{kullaniciBean.create()}" value="OLUŞTUR">
                         <f:ajax execute="kullanici-table" render="kullanici-table"/>
+                    </h:commandButton>
+                    <h:commandButton styleClass="btn btn-primary" action="/kullanici/list" value="İPTAL ET">
+                        <f:ajax execute="kullanicimenu"   render="kullanici-table"/>
                     </h:commandButton>
                 </div>
             </div>
