@@ -2,17 +2,17 @@ package entity;
 
 public class IsletimSistemi {
 
-    private int isletim_id;
+   private int isletim_id;
     private String isletim_adı;
     private String lisans_surum;
-    private String win_surum;
+    private int win_surum;
     private String dil;
     private int isletimsistemi_fiyat;
 
     public IsletimSistemi() {
     }
 
-    public IsletimSistemi(int isletim_id, String isletim_adı, String lisans_surum, String win_surum, String dil, int isletimsistemi_fiyat) {
+    public IsletimSistemi(int isletim_id, String isletim_adı, String lisans_surum, int win_surum, String dil, int isletimsistemi_fiyat) {
         this.isletim_id = isletim_id;
         this.isletim_adı = isletim_adı;
         this.lisans_surum = lisans_surum;
@@ -45,11 +45,11 @@ public class IsletimSistemi {
         this.lisans_surum = lisans_surum;
     }
 
-    public String getWin_surum() {
+    public int getWin_surum() {
         return win_surum;
     }
 
-    public void setWin_surum(String win_surum) {
+    public void setWin_surum(int win_surum) {
         this.win_surum = win_surum;
     }
 

@@ -26,7 +26,7 @@ public class MonitorDAO extends DBConnection {
             Statement st = this.connect().createStatement();
             ResultSet rs = st.executeQuery("select * from monitor where monitor_id=" + id);
             rs.next();
-            k = new Monitor(rs.getInt("monitor_id"), rs.getString("monitor_adı"), rs.getInt("ekranboyutu_inc"), rs.getString("cozunurluk"), rs.getString("yenileme_hizi"), rs.getString("tepkime_suresi"), rs.getString("baglanti_tipi"), rs.getInt("monitor_fiyat"));
+            k = new Monitor(rs.getInt("monitor_id"), rs.getString("monitor_adı"), rs.getFloat("ekranboyutu_inc"), rs.getString("cozunurluk"), rs.getInt("yenileme_hizi"), rs.getFloat("tepkime_suresi"), rs.getString("baglanti_tipi"), rs.getInt("monitor_fiyat"));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

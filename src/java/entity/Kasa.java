@@ -5,7 +5,7 @@ public class Kasa {
     private int kasa_id;
     private String kasa_adı;
     private String soket_turu;
-    private String cikis_gücü;
+    private int cikis_gücü;
     private int fan_sayisi;
     private String renk;
     private int kasa_fiyat;
@@ -13,7 +13,7 @@ public class Kasa {
     public Kasa() {
     }
 
-    public Kasa(int kasa_id, String kasa_adı, String soket_turu, String cikis_gücü, int fan_sayisi, String renk, int kasa_fiyat) {
+    public Kasa(int kasa_id, String kasa_adı, String soket_turu, int cikis_gücü, int fan_sayisi, String renk, int kasa_fiyat) {
         this.kasa_id = kasa_id;
         this.kasa_adı = kasa_adı;
         this.soket_turu = soket_turu;
@@ -47,11 +47,11 @@ public class Kasa {
         this.soket_turu = soket_turu;
     }
 
-    public String getCikis_gücü() {
+    public int getCikis_gücü() {
         return cikis_gücü;
     }
 
-    public void setCikis_gücü(String cikis_gücü) {
+    public void setCikis_gücü(int cikis_gücü) {
         this.cikis_gücü = cikis_gücü;
     }
 

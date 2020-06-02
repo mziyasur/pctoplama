@@ -26,7 +26,7 @@ public class AnakartDAO extends DBConnection {
             Statement st = this.connect().createStatement();
             ResultSet rs = st.executeQuery("select * from anakart where anakart_id=" + id);
             rs.next();
-            a = new Anakart(rs.getInt("anakart_id"), rs.getString("anakart_adı"), rs.getString("uyumlu_kasa"), rs.getString("soket_turu"), rs.getString("bellek_turu"), rs.getInt("maxbellek"), rs.getInt("anakart_fiyat"));
+            a = new Anakart(rs.getInt("anakart_id"), rs.getString("anakart_adı"), rs.getString("uyumlu_kasa"), rs.getString("soket_turu"), rs.getString("bellek_turu"),rs.getInt("calisma_hizi"), rs.getInt("maxbellek"),rs.getInt("anakart_fiyat"));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

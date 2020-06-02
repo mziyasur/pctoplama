@@ -18,7 +18,7 @@ public class IslemciDAO extends DBConnection {
             Statement st = this.connect().createStatement();
             ResultSet rs = st.executeQuery("select * from islemci where islemci_id=" + id);
             rs.next();
-            e = new Islemci(rs.getInt("islemci_id"), rs.getString("islemci_adı"), rs.getString("islemci_turu"), rs.getString("islemci_nesil"), rs.getInt("temel_frekans"), rs.getInt("turbo_frekans"), rs.getString("onbellek"), rs.getInt("cekirdek_sayisi"), rs.getString("soket_turu"), rs.getInt("islemci_fiyat"));
+            e = new Islemci(rs.getInt("islemci_id"), rs.getString("islemci_adı"), rs.getString("islemci_turu"), rs.getString("islemci_nesil"), rs.getFloat("temel_frekans"), rs.getFloat("turbo_frekans"), rs.getInt("onbellek"), rs.getInt("cekirdek_sayisi"), rs.getString("soket_turu"), rs.getInt("islemci_fiyat"));
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

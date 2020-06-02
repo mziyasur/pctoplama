@@ -13,17 +13,17 @@ public class Monitor {
 
     private int monitor_id;
     private String monitor_adı;
-    private int ekranboyutu_inc;
+    private float ekranboyutu_inc;
     private String cozunurluk;
-    private String yenileme_hizi;
-    private String tepkime_suresi;
+    private int yenileme_hizi;
+    private float tepkime_suresi;
     private String baglanti_tipi;
     private int monitor_fiyat;
 
     public Monitor() {
     }
 
-    public Monitor(int monitor_id, String monitor_adı, int ekranboyutu_inc, String cozunurluk, String yenileme_hizi, String tepkime_suresi, String baglanti_tipi, int monitor_fiyat) {
+    public Monitor(int monitor_id, String monitor_adı, float ekranboyutu_inc, String cozunurluk, int yenileme_hizi, float tepkime_suresi, String baglanti_tipi, int monitor_fiyat) {
         this.monitor_id = monitor_id;
         this.monitor_adı = monitor_adı;
         this.ekranboyutu_inc = ekranboyutu_inc;
@@ -50,11 +50,11 @@ public class Monitor {
         this.monitor_adı = monitor_adı;
     }
 
-    public int getEkranboyutu_inc() {
+    public float getEkranboyutu_inc() {
         return ekranboyutu_inc;
     }
 
-    public void setEkranboyutu_inc(int ekranboyutu_inc) {
+    public void setEkranboyutu_inc(float ekranboyutu_inc) {
         this.ekranboyutu_inc = ekranboyutu_inc;
     }
 
@@ -66,19 +66,19 @@ public class Monitor {
         this.cozunurluk = cozunurluk;
     }
 
-    public String getYenileme_hizi() {
+    public int getYenileme_hizi() {
         return yenileme_hizi;
     }
 
-    public void setYenileme_hizi(String yenileme_hizi) {
+    public void setYenileme_hizi(int yenileme_hizi) {
         this.yenileme_hizi = yenileme_hizi;
     }
 
-    public String getTepkime_suresi() {
+    public float getTepkime_suresi() {
         return tepkime_suresi;
     }
 
-    public void setTepkime_suresi(String tepkime_suresi) {
+    public void setTepkime_suresi(float tepkime_suresi) {
         this.tepkime_suresi = tepkime_suresi;
     }
 

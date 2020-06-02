@@ -26,7 +26,7 @@ public class BellekDAO extends DBConnection {
             Statement st = this.connect().createStatement();
             ResultSet rs = st.executeQuery("select * from bellek where bellek_id=" + id);
             rs.next();
-            b = new Bellek(rs.getInt("bellek_id"), rs.getString("bellek_adı"), rs.getInt("kapasite"), rs.getString("bellek_turu"), rs.getString("calisma_hizi"), rs.getString("gecikme_degeri"), rs.getInt("bellek_fiyat"));
+            b = new Bellek(rs.getInt("bellek_id"), rs.getString("bellek_adı"), rs.getInt("kapasite"), rs.getString("bellek_turu"), rs.getInt("calisma_hizi"), rs.getString("gecikme_degeri"), rs.getInt("bellek_fiyat"));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

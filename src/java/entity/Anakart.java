@@ -16,18 +16,20 @@ public class Anakart {
     private String uyumlu_kasa;
     private String soket_turu;
     private String bellek_turu;
+    private int calisma_hizi;
     private int maxbellek;
     private int anakart_fiyat;
 
     public Anakart() {
     }
 
-    public Anakart(int anakart_id, String anakart_adı, String uyumlu_kasa, String soket_turu, String bellek_turu, int maxbellek, int anakart_fiyat) {
+     public Anakart(int anakart_id, String anakart_adı, String uyumlu_kasa, String soket_turu, String bellek_turu, int calisma_hizi, int maxbellek, int anakart_fiyat) {
         this.anakart_id = anakart_id;
         this.anakart_adı = anakart_adı;
         this.uyumlu_kasa = uyumlu_kasa;
         this.soket_turu = soket_turu;
         this.bellek_turu = bellek_turu;
+        this.calisma_hizi = calisma_hizi;
         this.maxbellek = maxbellek;
         this.anakart_fiyat = anakart_fiyat;
     }
@@ -72,6 +74,14 @@ public class Anakart {
         this.bellek_turu = bellek_turu;
     }
 
+    public int getCalisma_hizi() {
+        return calisma_hizi;
+    }
+
+    public void setCalisma_hizi(int calisma_hizi) {
+        this.calisma_hizi = calisma_hizi;
+    }
+    
     public int getMaxbellek() {
         return maxbellek;
     }

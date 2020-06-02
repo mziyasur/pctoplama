@@ -8,9 +8,9 @@ public class Islemci {
     private String islemci_adı;
     private String islemci_turu;
     private String islemci_nesil;
-    private int temel_frekans;
-    private int turbo_frekans;
-    private String onbellek;
+    private float temel_frekans;
+    private float turbo_frekans;
+    private int onbellek;
     private int cekirdek_sayisi;
     private String soket_turu;
     private int islemci_fiyat;
@@ -18,7 +18,7 @@ public class Islemci {
     public Islemci() {
     }
 
-    public Islemci(int islemci_id, String islemci_adı, String islemci_turu, String islemci_nesil, int temel_frekans, int turbo_frekans, String onbellek, int cekirdek_sayisi, String soket_turu, int islemci_fiyat) {
+    public Islemci(int islemci_id, String islemci_adı, String islemci_turu, String islemci_nesil, float temel_frekans, float turbo_frekans, int onbellek, int cekirdek_sayisi, String soket_turu, int islemci_fiyat) {
         this.islemci_id = islemci_id;
         this.islemci_adı = islemci_adı;
         this.islemci_turu = islemci_turu;
@@ -63,27 +63,27 @@ public class Islemci {
         this.islemci_nesil = islemci_nesil;
     }
 
-    public int getTemel_frekans() {
+    public float getTemel_frekans() {
         return temel_frekans;
     }
 
-    public void setTemel_frekans(int temel_frekans) {
+    public void setTemel_frekans(float temel_frekans) {
         this.temel_frekans = temel_frekans;
     }
 
-    public int getTurbo_frekans() {
+    public float getTurbo_frekans() {
         return turbo_frekans;
     }
 
-    public void setTurbo_frekans(int turbo_frekans) {
+    public void setTurbo_frekans(float turbo_frekans) {
         this.turbo_frekans = turbo_frekans;
     }
 
-    public String getOnbellek() {
+    public int getOnbellek() {
         return onbellek;
     }
 
-    public void setOnbellek(String onbellek) {
+    public void setOnbellek(int onbellek) {
         this.onbellek = onbellek;
     }
 

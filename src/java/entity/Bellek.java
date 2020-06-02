@@ -15,14 +15,14 @@ public class Bellek {
     private String bellek_adı;
     private int kapasite;
     private String bellek_turu;
-    private String calisma_hizi;
+    private int calisma_hizi;
     private String gecikme_degeri;
     private int bellek_fiyat;
 
     public Bellek() {
     }
 
-    public Bellek(int bellek_id, String bellek_adı, int kapasite, String bellek_turu, String calisma_hizi, String gecikme_degeri, int bellek_fiyat) {
+    public Bellek(int bellek_id, String bellek_adı, int kapasite, String bellek_turu, int calisma_hizi, String gecikme_degeri, int bellek_fiyat) {
         this.bellek_id = bellek_id;
         this.bellek_adı = bellek_adı;
         this.kapasite = kapasite;
@@ -64,11 +64,11 @@ public class Bellek {
         this.bellek_turu = bellek_turu;
     }
 
-    public String getCalisma_hizi() {
+    public int getCalisma_hizi() {
         return calisma_hizi;
     }
 
-    public void setCalisma_hizi(String calisma_hizi) {
+    public void setCalisma_hizi(int calisma_hizi) {
         this.calisma_hizi = calisma_hizi;
     }
 

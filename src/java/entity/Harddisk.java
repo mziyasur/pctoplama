@@ -5,17 +5,17 @@ public class Harddisk {
 
     private int harddisk_id;
     private String harddisk_adı;
-    private String harddisk_kapasite;
-    private int harddisk_inc;
+    private float harddisk_kapasite;
+    private float harddisk_inc;
     private String harddisk_arabirim;
-    private String harddisk_donushizi;
-    private String harddisk_onbellek;
+    private int harddisk_donushizi;
+    private int harddisk_onbellek;
     private int harddisk_fiyat;
 
     public Harddisk() {
     }
 
-    public Harddisk(int harddisk_id, String harddisk_adı, String harddisk_kapasite, int harddisk_inc, String harddisk_arabirim, String harddisk_donushizi, String harddisk_onbellek, int harddisk_fiyat) {
+    public Harddisk(int harddisk_id, String harddisk_adı, float harddisk_kapasite, float harddisk_inc, String harddisk_arabirim, int harddisk_donushizi, int harddisk_onbellek, int harddisk_fiyat) {
         this.harddisk_id = harddisk_id;
         this.harddisk_adı = harddisk_adı;
         this.harddisk_kapasite = harddisk_kapasite;
@@ -42,19 +42,19 @@ public class Harddisk {
         this.harddisk_adı = harddisk_adı;
     }
 
-    public String getHarddisk_kapasite() {
+    public float getHarddisk_kapasite() {
         return harddisk_kapasite;
     }
 
-    public void setHarddisk_kapasite(String harddisk_kapasite) {
+    public void setHarddisk_kapasite(float harddisk_kapasite) {
         this.harddisk_kapasite = harddisk_kapasite;
     }
 
-    public int getHarddisk_inc() {
+    public float getHarddisk_inc() {
         return harddisk_inc;
     }
 
-    public void setHarddisk_inc(int harddisk_inc) {
+    public void setHarddisk_inc(float harddisk_inc) {
         this.harddisk_inc = harddisk_inc;
     }
 
@@ -66,19 +66,19 @@ public class Harddisk {
         this.harddisk_arabirim = harddisk_arabirim;
     }
 
-    public String getHarddisk_donushizi() {
+    public int getHarddisk_donushizi() {
         return harddisk_donushizi;
     }
 
-    public void setHarddisk_donushizi(String harddisk_donushizi) {
+    public void setHarddisk_donushizi(int harddisk_donushizi) {
         this.harddisk_donushizi = harddisk_donushizi;
     }
 
-    public String getHarddisk_onbellek() {
+    public int getHarddisk_onbellek() {
         return harddisk_onbellek;
     }
 
-    public void setHarddisk_onbellek(String harddisk_onbellek) {
+    public void setHarddisk_onbellek(int harddisk_onbellek) {
         this.harddisk_onbellek = harddisk_onbellek;
     }
 

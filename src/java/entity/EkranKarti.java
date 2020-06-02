@@ -13,8 +13,8 @@ public class EkranKarti {
 
     private int ekrankart_id;
     private String ekrankart_adı;
-    private String ekrankart_bellek;
-    private String bit_degeri;
+    private int ekrankart_bellek;
+    private int bit_degeri;
     private String bellek_tipi;
     private String slot_yapisi;
     private int ekrankart_fiyat;
@@ -22,7 +22,7 @@ public class EkranKarti {
     public EkranKarti() {
     }
 
-    public EkranKarti(int ekrankart_id, String ekrankart_adı, String ekrankart_bellek, String bit_degeri, String bellek_tipi, String slot_yapisi, int ekrankart_fiyat) {
+    public EkranKarti(int ekrankart_id, String ekrankart_adı, int ekrankart_bellek, int bit_degeri, String bellek_tipi, String slot_yapisi, int ekrankart_fiyat) {
         this.ekrankart_id = ekrankart_id;
         this.ekrankart_adı = ekrankart_adı;
         this.ekrankart_bellek = ekrankart_bellek;
@@ -48,19 +48,19 @@ public class EkranKarti {
         this.ekrankart_adı = ekrankart_adı;
     }
 
-    public String getEkrankart_bellek() {
+    public int getEkrankart_bellek() {
         return ekrankart_bellek;
     }
 
-    public void setEkrankart_bellek(String ekrankart_bellek) {
+    public void setEkrankart_bellek(int ekrankart_bellek) {
         this.ekrankart_bellek = ekrankart_bellek;
     }
 
-    public String getBit_degeri() {
+    public int getBit_degeri() {
         return bit_degeri;
     }
 
-    public void setBit_degeri(String bit_degeri) {
+    public void setBit_degeri(int bit_degeri) {
         this.bit_degeri = bit_degeri;
     }
 

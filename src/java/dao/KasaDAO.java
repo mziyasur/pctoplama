@@ -15,7 +15,7 @@ public class KasaDAO extends DBConnection {
             Statement st = this.connect().createStatement();
             ResultSet rs = st.executeQuery("select * from kasa where kasa_id=" + id);
             rs.next();
-            g = new Kasa(rs.getInt("kasa_id"), rs.getString("kasa_adı"), rs.getString("soket_turu"), rs.getString("cikis_gücü"), rs.getInt("fan_sayisi"), rs.getString("renk"), rs.getInt("kasa_fiyat"));
+            g = new Kasa(rs.getInt("kasa_id"), rs.getString("kasa_adı"), rs.getString("soket_turu"), rs.getInt("cikis_gücü"), rs.getInt("fan_sayisi"), rs.getString("renk"), rs.getInt("kasa_fiyat"));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

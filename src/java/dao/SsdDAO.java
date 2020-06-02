@@ -20,13 +20,13 @@ public class SsdDAO extends DBConnection {
     //CRUD İŞLEMLERİ
     //this.connect();
 
-    public Ssd getById(int id) {
+     public Ssd getById(int id) {
         Ssd l = null;
         try {
             Statement st = this.connect().createStatement();
             ResultSet rs = st.executeQuery("select * from ssd where ssd_id=" + id);
             rs.next();
-            l = new Ssd(rs.getInt("ssd_id"), rs.getString("ssd_adı"), rs.getString("ssd_kapasite"), rs.getString("ssd_arabirim"), rs.getString("ssd_okumahizi"), rs.getString("ssd_yazmahizi"), rs.getInt("ssd_fiyat"));
+            l = new Ssd(rs.getInt("ssd_id"), rs.getString("ssd_adı"), rs.getInt("ssd_kapasite"), rs.getString("ssd_arabirim"), rs.getInt("ssd_okumahizi"), rs.getInt("ssd_yazmahizi"), rs.getInt("ssd_fiyat"));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

@@ -15,7 +15,7 @@ public class IsletimSistemiDAO extends DBConnection {
             Statement st = this.connect().createStatement();
             ResultSet rs = st.executeQuery("select * from isletim_sistemi where isletim_id=" + id);
             rs.next();
-            f = new IsletimSistemi(rs.getInt("isletim_id"), rs.getString("isletim_adı"), rs.getString("lisans_surum"), rs.getString("win_surum"), rs.getString("dil"), rs.getInt("isletimsistemi_fiyat"));
+            f = new IsletimSistemi(rs.getInt("isletim_id"), rs.getString("isletim_adı"), rs.getString("lisans_surum"), rs.getInt("win_surum"), rs.getString("dil"), rs.getInt("isletimsistemi_fiyat"));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

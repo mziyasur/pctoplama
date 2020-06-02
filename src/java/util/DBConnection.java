@@ -18,7 +18,7 @@ public abstract class DBConnection {
 
             try {
                 Class.forName("com.mysql.jdbc.Driver").newInstance();
-                this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/postgre", "root", "123");
+                 this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/oemheidi", "root", "123");
                 //Class.forName("org.postgresql.Driver");
                 //this.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/oem", "postgres", "123");
             } catch (ClassNotFoundException | SQLException e) {

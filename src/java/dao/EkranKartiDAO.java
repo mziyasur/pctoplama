@@ -27,7 +27,7 @@ public class EkranKartiDAO extends DBConnection {
             Statement st = this.connect().createStatement();
             ResultSet rs = st.executeQuery("select * from ekran_kart where ekrankart_id=" + id);
             rs.next();
-            c = new EkranKarti(rs.getInt("ekrankart_id"), rs.getString("ekrankart_adı"), rs.getString("ekrankart_bellek"), rs.getString("bit_degeri"), rs.getString("bellek_tipi"), rs.getString("slot_yapisi"), rs.getInt("ekrankart_fiyat"));
+            c = new EkranKarti(rs.getInt("ekrankart_id"), rs.getString("ekrankart_adı"), rs.getInt("ekrankart_bellek"), rs.getInt("bit_degeri"), rs.getString("bellek_tipi"), rs.getString("slot_yapisi"), rs.getInt("ekrankart_fiyat"));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

@@ -15,7 +15,7 @@ public class HarddiskDAO extends DBConnection {
             Statement st = this.connect().createStatement();
             ResultSet rs = st.executeQuery("select * from hard_disk where harddisk_id=" + id);
             rs.next();
-            d = new Harddisk(rs.getInt("harddisk_id"), rs.getString("harddisk_adı"), rs.getString("harddisk_kapasite"), rs.getInt("harddisk_inc"), rs.getString("harddisk_arabirim"), rs.getString("harddisk_donushizi"), rs.getString("harddisk_onbellek"), rs.getInt("harddisk_fiyat"));
+            d = new Harddisk(rs.getInt("harddisk_id"), rs.getString("harddisk_adı"), rs.getFloat("harddisk_kapasite"), rs.getFloat("harddisk_inc"), rs.getString("harddisk_arabirim"), rs.getInt("harddisk_donushizi"), rs.getInt("harddisk_onbellek"), rs.getInt("harddisk_fiyat"));
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
