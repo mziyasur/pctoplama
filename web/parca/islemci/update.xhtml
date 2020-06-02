@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template/admin.xhtml">
+    <ui:define name="content">
+        <h:form id="islemci-form">
+            <div class="form-group">
+                <label> İŞLEMCİ ADI :</label>
+                <h:inputText id="a" styleClass="form-control" value="#{islemciBean.entity.islemci_adı}"
+                             label="işlemci adı" validator="AdValidator">
+                </h:inputText>
+                <h:message for="a" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> İŞLEMCİ TÜRÜ :</label>
+                <h:inputText id="b" maxlength="20" styleClass="form-control" value="#{islemciBean.entity.islemci_turu}"
+                             label="işlemci türü" validator="NormalValidator">
+                </h:inputText>
+                <h:message for="b" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> İŞLEMCİ NESLİ :</label>
+                <h:inputText id="c" maxlength="20" styleClass="form-control" value="#{islemciBean.entity.islemci_nesil}"
+                             label="işlemci nesli" validator="NormalValidator">
+                </h:inputText>
+                <h:message for="c" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> TEMEL FREKANS :</label>
+                <h:inputText id="d" maxlength="9" styleClass="form-control" value="#{islemciBean.entity.temel_frekans}"
+                             label="temel frekans" validator="BucukValidator"
+                             onkeypress="if(event.which &lt; 46 || event.which &gt; 57) return false;">
+                </h:inputText>
+                <h:message for="d" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> TURBO FREKANS :</label>
+                <h:inputText id="e" maxlength="9" styleClass="form-control" value="#{islemciBean.entity.turbo_frekans}"
+                             label="turbo frekans" validator="BucukValidator"
+                             onkeypress="if(event.which &lt; 46 || event.which &gt; 57) return false;">
+                </h:inputText>
+                <h:message for="e" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> ÖNBELLEK (MB) :</label>
+                <h:inputText id="f" maxlength="9" styleClass="form-control" value="#{islemciBean.entity.onbellek}"
+                             label="önbellek" validator="LowValidator" 
+                             onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
+                </h:inputText>
+                <h:message for="f" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> ÇEKİRDEK SAYISI :</label>
+                <h:inputText id="g" maxlength="9" styleClass="form-control" value="#{islemciBean.entity.cekirdek_sayisi}"
+                             label="çekirdek sayısı" validator="LowValidator" 
+                             onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
+                </h:inputText>
+                <h:message for="g" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> SOKET TÜRÜ :</label>
+                <h:inputText id="h" maxlength="20" styleClass="form-control" value="#{islemciBean.entity.soket_turu}"
+                             label="soket türü" validator="NormalValidator">
+                </h:inputText>
+                <h:message for="h" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> İŞLEMCİ FİYATI :</label>
+                <h:inputText id="i" maxlength="9" styleClass="form-control" value="#{islemciBean.entity.islemci_fiyat}"
+                             label="işlemci fiyatı" validator="FiyatValidator" 
+                             onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
+                </h:inputText>
+                <h:message for="i" style="color: red;"/><br/>
+            </div>
+            <h:commandButton styleClass="btn btn-success" action="#{islemciBean.update()}" value="Güncelle">
+                <f:ajax execute="islemci-form" render="islemci-form"/>
+            </h:commandButton>
+            <h:commandButton styleClass="btn btn-primary" action="/parca/islemci/list" value="Vazgeç">
+                             <f:ajax execute="anamenu" render="islemci-form"/>
+            </h:commandButton>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template/admin.xhtml">
+    <ui:define name="content">
+        <h:form id="ssd-form">
+            <div class="form-group">
+                <label> SSD ADI :</label>
+                <h:inputText id="a" styleClass="form-control" value="#{ssdBean.entity.ssd_adı}"
+                             label="ssd adı" validator="AdValidator">
+                </h:inputText>
+                <h:message for="a" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> KAPASİTE(GB) :</label>
+                <h:inputText id="b" maxlength="9" styleClass="form-control" value="#{ssdBean.entity.ssd_kapasite}"
+                             label="kapasite" validator="MaxValidator" 
+                             onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
+                </h:inputText>
+                <h:message for="b" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> SSD ARABİRİMİ :</label>
+                <h:inputText id="c" maxlength="20" styleClass="form-control" value="#{ssdBean.entity.ssd_arabirim}"
+                             label="ssd arabirimi" validator="NormalValidator">
+                </h:inputText>
+                <h:message for="c" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> OKUMA HIZI(MB/s) :</label>
+                <h:inputText id="d" maxlength="9" styleClass="form-control" value="#{ssdBean.entity.ssd_okumahizi}"
+                             label="okuma hızı" validator="MaxValidator" 
+                             onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
+                </h:inputText>
+                <h:message for="d" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> YAZMA HIZI(MB/s) :</label>
+                <h:inputText id="e" maxlength="9" styleClass="form-control" value="#{ssdBean.entity.ssd_yazmahizi}"
+                             label="yazma hızı" validator="MaxValidator" 
+                             onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
+                </h:inputText>
+                <h:message for="e" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> SSD FİYATI :</label>
+                <h:inputText id="f" maxlength="9" styleClass="form-control" value="#{ssdBean.entity.ssd_fiyat}"
+                             label="ssd fiyatı" validator="FiyatValidator" 
+                             onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
+                </h:inputText>
+                <h:message for="f" style="color: red;"/><br/>
+            </div>
+            <h:commandButton styleClass="btn btn-success" action="#{ssdBean.update()}" value="Güncelle">
+                <f:ajax execute="ssd-form" render="ssd-form"/>
+            </h:commandButton>
+            <h:commandButton styleClass="btn btn-primary" action="/parca/ssd/list" value="Vazgeç">
+                             <f:ajax execute="anamenu" render="ssd-form"/>
+            </h:commandButton>
+        </h:form>
+    </ui:define>
+</ui:composition>

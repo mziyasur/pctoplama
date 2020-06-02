@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template/admin.xhtml">
+    <ui:define name="content">
+        <h:form id="monitor-form">
+            <div class="form-group">
+                <label> MONİTÖR ADI :</label>
+                <h:inputText id="a" styleClass="form-control" value="#{monitorBean.entity.monitor_adı}"
+                             label="monitör adı" validator="AdValidator">
+                </h:inputText>
+                <h:message for="a" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> EKRAN BOYUTU(İnç) :</label>
+                <h:inputText id="b" maxlength="9" styleClass="form-control" value="#{monitorBean.entity.ekranboyutu_inc}"
+                             label="ekran boyutu" validator="BucukValidator"
+                             onkeypress="if(event.which &lt; 46 || event.which &gt; 57) return false;">
+                </h:inputText>
+                <h:message for="b" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> ÇÖZÜNÜRLÜK :</label>
+                <h:inputText id="c" maxlength="9" styleClass="form-control" value="#{monitorBean.entity.cozunurluk}"
+                             label="çözünürlük" validator="CozunurlukValidator">
+                </h:inputText>
+                <h:message for="c" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> YENİLEME HIZI(Hz) :</label>
+                <h:inputText id="d" maxlength="9" styleClass="form-control" value="#{monitorBean.entity.yenileme_hizi}"
+                             label="yenileme hızı" validator="HighValidator" 
+                             onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
+                </h:inputText>
+                <h:message for="d" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> TEPKİME SÜRESİ(ms) :</label>
+                <h:inputText id="e" maxlength="9" styleClass="form-control" value="#{monitorBean.entity.tepkime_suresi}"
+                             label="tepkime süresi" validator="BucukValidator"
+                             onkeypress="if(event.which &lt; 46 || event.which &gt; 57) return false;">
+                </h:inputText>
+                <h:message for="e" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> BAĞLANTI TİPİ :</label>
+                <h:inputText id="f" maxlength="20" styleClass="form-control" value="#{monitorBean.entity.baglanti_tipi}"
+                             label="bağlantı tipi" validator="NormalValidator">
+                </h:inputText>
+                <h:message for="f" style="color: red;"/><br/>
+            </div>
+            <div class="form-group">
+                <label> MONİTÖR FİYATI :</label>
+                <h:inputText id="g" maxlength="9" styleClass="form-control" value="#{monitorBean.entity.monitor_fiyat}"
+                             label="monitör fiyatı" validator="FiyatValidator" 
+                             onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;">
+                </h:inputText>
+                <h:message for="g" style="color: red;"/><br/>
+            </div>
+            <h:commandButton styleClass="btn btn-success" action="#{monitorBean.update()}" value="Güncelle">
+                <f:ajax execute="monitor-form" render="monitor-form"/>
+            </h:commandButton>
+            <h:commandButton styleClass="btn btn-primary" action="/parca/monitor/list" value="Vazgeç">
+                             <f:ajax execute="anamenu" render="monitor-form"/>
+            </h:commandButton>
+        </h:form>
+    </ui:define>
+</ui:composition>
