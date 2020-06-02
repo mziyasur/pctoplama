@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"           
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/template/kullanici.xhtml" >
+    <ui:define name="content">
+        <h:form id="kullanici-table">
+            <div class="form-group row">
+
+                <label class="col-sm-2  col-form-label" >KULLANICI ŞİFRE</label>
+                <div class="col-sm-9">
+                    <h:inputText  class="form-control" value="#{kullaniciBean.entity.kullanici_sifre}" >
+                    </h:inputText>
+                </div>
+                <br/>
+                <div class="col-sm-9">
+                    <h:commandButton styleClass="btn btn-primary" action="#{kullaniciBean.update()}" value="ŞİFRE Güncelle">
+                        <f:ajax execute="kullanici-table" render="kullanici-table"/>
+                    </h:commandButton>
+                </div>
+            </div>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
+
