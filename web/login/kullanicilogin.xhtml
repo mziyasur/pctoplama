@@ -12,14 +12,16 @@
     <h:form id="kullanicilogin-form" class="box">
         <h1>Kullanıcı Adı</h1>
         <h:inputText id="ad" maxlength="20" class="form-control" value="#{loginController.kullanici.kullanici_ad}" 
-                     validatorMessage="Kullanıcı adı 10 karakteri geçemez!" >
-            <f:validateLength maximum="10" />
+                     label="kullanıcı adı" validator="KullaniciValidator" >
         </h:inputText>
         <h:message for="ad" style="color: yellow"/>
         <h1>Şifre</h1>
-        <h:inputSecret id="sifre" redisplay="true" maxlength="20" class="form-control" value="#{loginController.kullanici.kullanici_sifre}" />
-        <h:commandButton action="#{loginController.kullaniciLogin()}" value="Giriş Yap" > 
+        <h:inputSecret id="sifre" redisplay="true" maxlength="20" class="form-control"
+                       value="#{loginController.kullanici.kullanici_sifre}" />
+        <h:commandButton id="check" binding="#{loginController.kulbutton}"
+                         action="#{loginController.kullaniciLogin()}" value="Giriş Yap" > 
             <f:ajax execute="kullanicilogin-form" render="kullanicilogin-form"/>
+            <h:message style="color: orangered" for="check" /> 
         </h:commandButton>
     </h:form>
 </html>

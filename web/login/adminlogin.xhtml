@@ -11,15 +11,17 @@
     </h:head>
     <h:form id="adminlogin-form" class="box">
         <h1>Admin Adı</h1>
-        <h:inputText id="ad" maxlength="20" class="form-control" value="#{loginController.admin.admin_ad}"
-                     validatorMessage="Admin adı 10 karakteri geçemez!" >
-            <f:validateLength maximum="10" />
+        <h:inputText id="ad" maxlength="20" class="form-control" value="#{loginController.admin.admin_ad}" 
+                     label="admin adı" validator="KullaniciValidator" >
         </h:inputText>
         <h:message for="ad" style="color: yellow"/>
         <h1>Şifre</h1>
-        <h:inputSecret id="sifre" redisplay="true" maxlength="20" class="form-control" value="#{loginController.admin.admin_sifre}" />
-        <h:commandButton  action="#{loginController.adminLogin()}" value="Giriş Yap" >
+        <h:inputSecret id="sifre" redisplay="true" maxlength="20" class="form-control" 
+                       value="#{loginController.admin.admin_sifre}" />
+        <h:commandButton id="checkk" binding="#{loginController.adbutton}"
+                         action="#{loginController.adminLogin()}" value="Giriş Yap" >
             <f:ajax execute="adminlogin-form" render="adminlogin-form"/>
+            <h:message style="color: orangered" for="checkk" />
         </h:commandButton>
     </h:form>
 </html>

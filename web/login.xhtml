@@ -11,22 +11,23 @@
         <h:outputScript library="js" name="bootstrap.js"/>
     </h:head>
     <h:body style="background-color: #BCBBBB;">
-        <div class="container">
+        <div class="container" onMouseOver="this.style.cursor='default'">
             <h:form id="login-form">
                 <h:graphicImage library="image" name="image1.jpg"/>
                 <h2 class="text-center" > BİLGİSAYAR TOPLAMA </h2> 
-                <p class="text-center">  DEVAM EDEBİLMEK İÇİN KULLANICI VEYA ADMİN GİRİŞİ YAPINIZ </p>
+                <p class="text-center" style="background-color: #c8cbcf;border-radius: 24px;border:1px solid #95999c; color: #F48024 ">
+                    DEVAM EDEBİLMEK İÇİN KULLANICI VEYA ADMİN GİRİŞİ YAPINIZ </p>
                 <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #F48024;">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav">
+                        <div class="navbar-nav mx-auto order-0">
                             <h:form>
-                                <h:commandButton styleClass="btn btn-success" action="/login/kullanicilogin.xhtml" value="Kullanıcı Girişi">
+                                <h:commandButton styleClass="btn btn-success" style="width: 180px" action="/login/kullanicilogin.xhtml" value="Kullanıcı Girişi">
                                     <f:ajax execute="login-form" render="login-form"/>
                                 </h:commandButton>
-                                <h:commandButton styleClass="btn btn-primary" action="/login/adminlogin.xhtml" value="Admin Girişi">
+                                <h:commandButton styleClass="btn btn-primary" style="width: 180px" action="/login/adminlogin.xhtml" value="Admin Girişi">
                                     <f:ajax execute="login-form" render="login-form"/>
                                 </h:commandButton>
                             </h:form>
